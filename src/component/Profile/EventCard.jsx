@@ -6,8 +6,8 @@ import DeleteIcon from '@mui/icons-material/Delete';
 const EventCard = () => {
   return (
     <div>
-        <Card sx={{width:345}}>
-            <CardMedia sx={{height:345}} image='https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg'/>
+        <Card sx={{width:290}}>
+            <CardMedia sx={{height:290}} image='https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?cs=srgb&dl=pexels-pixabay-326055.jpg&fm=jpg'/>
             <CardContent>
                 <Typography variant='h5' >
                     Viet Nam Fast Food
