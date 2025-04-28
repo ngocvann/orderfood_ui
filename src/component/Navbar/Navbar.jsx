@@ -38,7 +38,7 @@ const Navbar = () => {
             <div className='cursor-pointer'> 
                 {auth.user?( 
                     <Avatar onClick={handleAvatarClick} sx={{bgcolor:"white", color:orange.A400}}>
-                        {auth.user.fullName[0].toUpperCase()}
+                        {auth.user?.fullName[0].toUpperCase()}
                     </Avatar>
                 ) : (
                     <IconButton onClick={()=>navigate("/account/login")}>
