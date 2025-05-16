@@ -1,21 +1,21 @@
-import { Button, Card } from '@mui/material'
-import React from 'react'
+import { Button, Card } from "@mui/material";
+import React from "react";
 
-const OrderCard = () => {
+const OrderCard = ({ item, order }) => {
   return (
-    <Card className='flex justify-between items-center p-5'>
-        <div className="flex items-center space-x-5">
-            <img className='h-16 w-16' src="https://product.hstatic.net/200000626331/product/sup_ghe_01249c6d1f1c413ebc3ba316b2f63788_grande.png" alt="" />
-            <div>
-                <p>Blue Crab Soup (Small Bowl) - Soup Ghẹ</p>
-                <p>98,000đ</p>
-            </div>
-        </div>
+    <Card className="flex justify-between items-center p-5">
+      <div className="flex items-center space-x-5">
+        <img className="h-16 w-16" src={item.food.name} alt="" />
         <div>
-            <Button className='cursor-not-allowed'> Complete </Button>
+          <p>{item.food.name}</p>
+          <p>{item.totalPrice}&#8363;</p>
         </div>
+      </div>
+      <div>
+        <Button className="cursor-not-allowed"> {order.orderStatus} </Button>
+      </div>
     </Card>
-  )
-}
+  );
+};
 
-export default OrderCard
+export default OrderCard;
