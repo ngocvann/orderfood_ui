@@ -202,6 +202,7 @@ export const getRestaurantEvents = ({restaurantId, jwt}) => {
             console.log("Get restaurants event", res.data);
             dispatch({ type: GET_RESTAURANTS_EVENTS_SUCCESS, payload:res.data});
         } catch (error) {
+            console.log("error", error);
             dispatch({type: GET_RESTAURANTS_EVENTS_FAILURE, payload: error});
         }
     };
@@ -229,7 +230,7 @@ export const getRestaurantsCategory = ({jwt,restaurantId}) => {
     return async (dispatch) => {
         dispatch({type:GET_RESTAURANTS_CATEGORY_REQUEST});
         try {
-            const res = await api.get(`api/admin/events/restaurant/${restaurantId}`, {
+            const res = await api.get(`api/category/restaurant/${restaurantId}`, {
                 headers: {
                     Authorization: `Bearer ${jwt}`,
                 },
@@ -237,6 +238,7 @@ export const getRestaurantsCategory = ({jwt,restaurantId}) => {
             console.log("Get restaurants event", res.data);
             dispatch({ type: GET_RESTAURANTS_CATEGORY_SUCCESS, payload:res.data});
         } catch (error) {
+            console.log("catch error", error)
             dispatch({type: GET_RESTAURANTS_CATEGORY_FAILURE, payload: error});
         }
     };

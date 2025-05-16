@@ -1,22 +1,56 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material'
-import React from 'react'
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  Typography,
+} from "@mui/material";
+import React, { useState } from "react";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import { categorizeIngredients } from "../util/categrizeIngredients";
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../State/Cart/Action";
 
 const demo = [
   {
-    category:"Nước chấm",
-    ingredients:["Muối ớt xanh"]
+    category: "Nước chấm",
+    ingredients: ["Muối ớt xanh"],
   },
   {
-    category:"Độ cay",
-    ingredients:["Cay","Không cay"]
-  }
-]
+    category: "Độ cay",
+    ingredients: ["Cay", "Không cay"],
+  },
+];
 
-const MenuCard = () => {
-  const handleCheckBoxChange=(value)=>{
-    console.log("value")
-  }
+const MenuCard = ({ item }) => {
+  const [selectedIngredients, setSelectedIngredients] = useState([]);
+  const dispatch = useDispatch();
+  const handleCheckBoxChange = (itemName) => {
+    console.log("value", itemName);
+    if (selectedIngredients.includes(itemName)) {
+      setSelectedIngredients(
+        selectedIngredients.filter((item) => item !== itemName)
+      );
+    } else {
+      setSelectedIngredients([...selectedIngredients, itemName]);
+    }
+  };
+  const handleAddItemToCart = (e) => {
+    e.preventDefault();
+    const reqData = {
+      token: localStorage.getItem("jwt"),
+      cartItem: {
+        foodId: item.id,
+        quantity: 1,
+        ingredients: selectedIngredients,
+      },
+    };
+    dispatch(addItemToCart(reqData));
+    console.log("req data", reqData);
+  };
   return (
     <Accordion>
       <AccordionSummary
@@ -24,39 +58,56 @@ const MenuCard = () => {
         aria-controls="panel1-content"
         id="panel1-header"
       >
-      <div className="lg:flex items-center justify-between">
-        <div className='lg:flex items-center lg:gap-5'>
-          <img className='w-[7rem] h-[7rem] object-cover' src="https://product.hstatic.net/200000626331/product/37_9ab6ca3156c24a12a02ed0a3dd14c35f_grande.png" alt="" />
-          <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
-            <p className='font-semibold text-xl'>Sụn Gà Rang Muối</p>
-            <p>175.000&#8363;</p>
-            <p className='text-gray-400'>Giòn sật của miếng sụn gà khi kết hợp vị mặn từ muối càng làm cho món ăn thêm phần hấp dẫn. Chấm với tương ớt hay muối tiêu xanh thì đúng hết sẩy.</p>
+        <div className="lg:flex items-center justify-between">
+          <div className="lg:flex items-center lg:gap-5">
+            <img
+              className="w-[7rem] h-[7rem] object-cover"
+              src={item.images[0]}
+              alt=""
+            />
+            <div className="space-y-1 lg:space-y-5 lg:max-w-2xl">
+              <p className="font-semibold text-xl">{item.name}</p>
+              <p>{item.price}&#8363;</p>
+              <p className="text-gray-400">{item.description}</p>
+            </div>
           </div>
         </div>
-      </div>
       </AccordionSummary>
       <AccordionDetails>
-        <form action="">
+        <form onSubmit={handleAddItemToCart}>
           <div className="flex gap-5 flex-wrap">
-            {
-              demo.map((item)=> (
+            {Object.keys(categorizeIngredients(item.ingredients)).map(
+              (category) => (
                 <div>
                   <p>{item.category}</p>
                   <FormGroup>
-                    {item.ingredients.map((item)=> (
-                      <FormControlLabel control={<Checkbox onChange={()=>handleCheckBoxChange(item)}/>} label={item} />
-                    ))}
+                    {categorizeIngredients(item.ingredients)[category].map(
+                      (item) => (
+                        <FormControlLabel
+                          key={item.id}
+                          control={
+                            <Checkbox
+                              onChange={() => handleCheckBoxChange(item.name)}
+                            />
+                          }
+                          label={item}
+                        />
+                      )
+                    )}
                   </FormGroup>
-                </div>                
-              ))}
+                </div>
+              )
+            )}
           </div>
-          <div className='pt-5'>
-            <Button type='submit' variant='contained' disabled={false}>{true?"Add to Cart":"Out of Stock"}</Button>
+          <div className="pt-5">
+            <Button type="submit" variant="contained" disabled={false}>
+              {true ? "Add to Cart" : "Out of Stock"}
+            </Button>
           </div>
-        </form> 
+        </form>
       </AccordionDetails>
     </Accordion>
-  )
-}
+  );
+};
 
-export default MenuCard
+export default MenuCard;
