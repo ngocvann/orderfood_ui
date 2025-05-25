@@ -15,12 +15,11 @@ const initialValues = {
   cuisineType: "",
   streetAddress: "",
   city: "",
-  stateProvince: "",
-  postalCode: "",
+  state: "",
   country: "",
   email: "",
   mobile: "",
-  twitter: "",
+  facebook: "",
   instagram: "",
   openingHours: "Mon-Sun: 9:00 AM - 8:00 PM",
   images: [],
@@ -39,14 +38,13 @@ const CreateRestaurantForm = () => {
       address: {
         streetAddress: values.streetAddress,
         city: values.city,
-        stateProvince: values.stateProvince,
-        postalCode: values.postalCode,
+        state: values.state,
         country: values.country,
       },
       contactInformation: {
         email: values.email,
         mobile: values.mobile,
-        twitter: values.twitter,
+        facebook: values.facebook,
         instagram: values.instagram,
       },
       openingHours: values.openingHours,
@@ -198,23 +196,12 @@ const CreateRestaurantForm = () => {
             <Grid item xs={4}>
               <TextField
                 fullWidth
-                id="stateProvince"
-                name="stateProvince"
+                id="state"
+                name="state"
                 label="Quận/Huyện"
                 variant="outlined"
                 onChange={formik.handleChange}
-                value={formik.values.stateProvince}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                id="postalCode"
-                name="postalCode"
-                label="Phường/Xã"
-                variant="outlined"
-                onChange={formik.handleChange}
-                value={formik.values.postalCode}
+                value={formik.values.state}
               />
             </Grid>
             <Grid item xs={12}>
@@ -253,12 +240,12 @@ const CreateRestaurantForm = () => {
             <Grid item xs={6}>
               <TextField
                 fullWidth
-                id="twitter"
-                name="twitter"
+                id="facebook"
+                name="facebook"
                 label="Facebook"
                 variant="outlined"
                 onChange={formik.handleChange}
-                value={formik.values.twitter}
+                value={formik.values.facebook}
               />
             </Grid>
             <Grid item xs={6}>
