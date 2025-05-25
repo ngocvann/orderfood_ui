@@ -1,33 +1,40 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Navbar from "./component/Navbar/Navbar";
-import { ThemeProvider } from "@emotion/react";
-import { darkTheme } from "./Theme/DarkTheme";
-import { CssBaseline } from "@mui/material";
-import Home from "./component/Home/Home";
-import RestaurantDetails from "./component/Restaurant/RestaurantDetails";
-import Cart from "./component/Cart/Cart";
-import Profile from "./component/Profile/Profile";
-import CustomerRoute from "./Routers/CustomerRoute";
-import { useEffect } from "react";
+
+import { DarkTheme } from "./Theme/DarkTheme";
+import Routers from "./Routers/Routers";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser } from "./component/State/Authentication/Action";
-import { findCart } from "./component/State/Cart/Action";
+import { useEffect } from "react";
+import { getUser } from "./State/Authentication/Action";
+import { findCart } from "./State/Customers/Cart/cart.action";
+import {
+  getAllRestaurantsAction,
+  getRestaurantById,
+  getRestaurantByUserId,
+} from "./State/Customers/Restaurant/restaurant.action";
+import { CssBaseline, ThemeProvider } from "@mui/material";
 
 function App() {
   const dispatch = useDispatch();
-  const jwt = localStorage.getItem("jwt");
   const { auth } = useSelector((store) => store);
+  const jwt = localStorage.getItem("jwt");
 
   useEffect(() => {
-    dispatch(getUser(auth.jwt || jwt));
-    dispatch(findCart(jwt));
+    if (jwt) {
+      dispatch(getUser(jwt));
+      dispatch(findCart(jwt));
+      dispatch(getAllRestaurantsAction(jwt));
+    }
   }, [auth.jwt]);
 
+  useEffect(() => {
+    if (auth.user?.role == "ROLE_RESTAURANT_OWNER") {
+      dispatch(getRestaurantByUserId(auth.jwt || jwt));
+    }
+  }, [auth.user]);
   return (
-    <ThemeProvider theme={darkTheme}>
+    <ThemeProvider theme={DarkTheme}>
       <CssBaseline />
-      <CustomerRoute />
+      <Routers />
     </ThemeProvider>
   );
 }
