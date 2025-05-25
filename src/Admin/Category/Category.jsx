@@ -51,7 +51,7 @@ const Category = () => {
 
   return (
     <div>
-      <Card className="mt-1">
+      <Card className="mt-16">
         <CardHeader
           title={"DANH MỤC MÓN ĂN"}
           sx={{

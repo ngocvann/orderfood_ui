@@ -49,7 +49,7 @@ const AdminNavbar = ({ handleOpenSideBar }) => {
     handleCloseMenu();
   };
   return (
-    <div className="px-5 z-50 py-[.6rem] bg-[#ff9900]  lg:px-20 flex justify-between">
+    <div className="fixed top-0 left-0 w-full px-5 z-50 py-[.6rem] bg-[#ff9900]  lg:px-20 flex justify-between">
       <div className="flex items-center space-x-4">
         <div
           onClick={navigateToHome}

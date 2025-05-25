@@ -10,6 +10,7 @@ import {
   CircularProgress,
   Menu,
   MenuItem,
+  Paper,
   Table,
   TableBody,
   TableCell,
@@ -72,7 +73,7 @@ const OrdersTable = ({ isDashboard, name }) => {
 
   return (
     <Box>
-      <Card className="mt-1">
+      <Card className="mt-1 w-full mx-auto">
         <CardHeader
           title={name}
           sx={{
@@ -81,14 +82,14 @@ const OrdersTable = ({ isDashboard, name }) => {
             "& .MuiCardHeader-action": { mt: 0.6 },
           }}
         />
-        <TableContainer>
+        <TableContainer sx={{ width: "100%" }}>
           <Table sx={{}} aria-label="table in dashboard">
             <TableHead>
               <TableRow>
                 <TableCell>Id</TableCell>
                 <TableCell>Hình ảnh</TableCell>
                 {/* {!isDashboard && <TableCell>Title</TableCell>} */}
-                <TableCell>Tên khách hàng</TableCell>
+                <TableCell>Khách hàng</TableCell>
                 <TableCell>Đơn giá</TableCell>
 
                 <TableCell>Tên món</TableCell>
@@ -128,7 +129,7 @@ const OrdersTable = ({ isDashboard, name }) => {
 
                     <TableCell sx={{}}>{item?.customer.email}</TableCell>
 
-                    <TableCell>₹{item?.totalAmount}</TableCell>
+                    <TableCell>{item?.totalAmount}&#8363;</TableCell>
 
                     <TableCell className="">
                       {item.items.map((orderItem) => (
@@ -206,19 +207,6 @@ const OrdersTable = ({ isDashboard, name }) => {
                         </div>
                       </TableCell>
                     )}
-                    {/* {!isDashboard && (
-                    <TableCell
-                      sx={{ textAlign: "center" }}
-                      className="text-white"
-                    >
-                      <Button
-                        onClick={() => handleDeleteOrder(item._id)}
-                        variant="text"
-                      >
-                        delete
-                      </Button>
-                    </TableCell>
-                  )} */}
                   </TableRow>
                 ))}
             </TableBody>

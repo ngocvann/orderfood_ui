@@ -309,7 +309,7 @@ const AddMenuForm = () => {
             </Grid> */}
             </Grid>
             <Button variant="contained" color="primary" type="submit">
-              Create Menu Item
+              TẠO MỚI
             </Button>
           </form>
         </div>

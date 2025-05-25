@@ -74,62 +74,46 @@ const Restaurant = () => {
 
   return (
     <>
-      <div className="px-5 lg:px-20 ">
-        <section>
-          <h3 className="text-gray-500 py-2 mt-10">
+      <div className="px-5 lg:px-20">
+        <section className="mt-3">
+          <h3 className="text-gray-500 py-2 mt-3 mb-2">
             Trang chủ/{restaurant.restaurant?.address.country}/
             {restaurant.restaurant?.name}/{restaurant.restaurant?.id}/Đặt món
           </h3>
-          <div>
-            <Grid container spacing={2}>
-              <Grid item xs={12}>
-                <img
-                  className="w-full h-[40vh] object-cover"
-                  src={restaurant.restaurant?.images[0]}
-                  alt=""
-                />
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  className="w-full h-[40vh] object-cover"
-                  src={restaurant.restaurant?.images[1]}
-                  alt=""
-                />
-              </Grid>
-              <Grid item xs={12} lg={6}>
-                <img
-                  className="w-full h-[40vh] object-cover"
-                  src={restaurant.restaurant?.images[2]}
-                  alt=""
-                />
-              </Grid>
-            </Grid>
-          </div>
-          <div className="pt-3 pb-5">
-            <h1 className="text-4xl font-semibold">
-              {restaurant.restaurant?.name}
-            </h1>
-            <p className="text-gray-500 mt-1">
-              {restaurant.restaurant?.description}
-            </p>
-            <div className="space-y-3 mt-3">
-              <p className="text-gray-500 flex items-center gap-3">
-                <LocationOnIcon />{" "}
-                <span>{restaurant.restaurant?.address.streetAddress}</span>
+          <div className="flex space-x-4">
+            <div className="w-2/5">
+              <img
+                className="w-full h-[60vh] object-cover rounded-lg"
+                src={restaurant.restaurant?.images[0]}
+                alt=""
+              />
+            </div>
+
+            <div className="w-3/5 pt-3 ps-5">
+              <h1 className="text-5xl font-semibold">
+                {restaurant.restaurant?.name}
+              </h1>
+              <p className="text-gray-500 mt-2">
+                {restaurant.restaurant?.description}
               </p>
-              <p className="flex items-center gap-3 text-gray-500">
-                <TodayIcon />{" "}
-                <span className=" text-orange-300">
-                  {" "}
-                  {restaurant.restaurant?.openingHours} (Today)
-                </span>
-              </p>
+              <div className="space-y-3 mt-3">
+                <p className="text-gray-500 flex items-center gap-3">
+                  <LocationOnIcon />
+                  <span>{restaurant.restaurant?.address.streetAddress}</span>
+                </p>
+                <p className="flex items-center gap-3 text-gray-500">
+                  <TodayIcon />
+                  <span className="text-orange-300">
+                    {restaurant.restaurant?.openingHours} (Today)
+                  </span>
+                </p>
+              </div>
             </div>
           </div>
         </section>
-        <Divider />
+        <Divider style={{ marginTop: "20px" }} />
 
-        <section className="pt-[2rem] lg:flex relative ">
+        <section className="pt-[2rem] lg:flex relative pb-8">
           <div className="space-y-10 lg:w-[20%] filter">
             <div className="box space-y-5 lg:sticky top-28">
               <div className="">
