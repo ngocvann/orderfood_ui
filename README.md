@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+# 🌐 XÂY DỰNG WEBSITE ĐẶT THỨC ĂN
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img width="948" height="439" alt="image" src="https://github.com/user-attachments/assets/b59e240e-15fc-4393-b00f-2a9a49ee94b7" />
+<img width="943" height="279" alt="image" src="https://github.com/user-attachments/assets/f7a4f5a7-2a8d-40af-a703-f76725019077" />
+<img width="949" height="261" alt="image" src="https://github.com/user-attachments/assets/5abdf92f-26a2-436c-8e32-6c9c993f9d75" />
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+---
+<img width="949" height="396" alt="image" src="https://github.com/user-attachments/assets/6a96fa2e-e31f-4450-8101-1456adb9dfce" />
+<img width="949" height="600" alt="image" src="https://github.com/user-attachments/assets/9ed72bb9-f7a1-4045-84ad-cbc77ef6e3bb" />
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<img width="947" height="440" alt="image" src="https://github.com/user-attachments/assets/ae71ecdb-5b92-4d43-bd1e-04053dc35f44" />
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Dự án này được xây dựng bởi [Nguyễn Ngô Ngọc Vân](https://github.com/ngocvann)**
 
-### `npm run build`
+---
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🚀 Mô Tả Dự Án
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Dự án này nhằm xây dựng một website đặt thức ăn, với các chức năng nổi bật sau:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Đăng ký tài khoản**: Người dùng có thể dễ dàng đăng ký tài khoản mua/bán thức ăn.
+- **Gợi ý các quán ăn nổi bật**: Người dùng có thể xem tổng quan các quán ăn ở trang chủ, khi click chọn quán ăn thì sẽ dẫn đến trang xem chi tiết quán và thực đơn của quán
+- **Đặt món ăn**: Khách hàng có đặt giao hàng với số lượng món và tùy chỉnh món tự chọn
+- **Thêm quán ăn vào mục yêu thích**: Khách hàng có thể thêm quán ăn vào danh mục yêu thích
+- **Tìm kiếm món ăn**: Người dùng có thể tìm kiếm món ăn theo nhiều tiêu chí như tên quán, tên sản phẩm, v.v.
+- **Đăng tải thực đơn, khuyến mãi và sự kiện**: Người đăng ký tài khoản với vai trò người bán có thể đăng tải các món ăn của nhà hàng, tùy chọn khẩu vị cho khách hàng, phân loại theo danh mục, có thể thêm các khuyến mãi và sự kiện cho quán.
+- **Quản lý đơn hàng đã đặt**: Người dùng có thể xem chi tiết đơn hàng, trạng thái và hủy nếu cần. Với người bán thì có thể quản lý các đơn hàng của nhà hàng, cập nhật trạng thái đơn hang.
 
-### `npm run eject`
+---
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 💻 Các Công Nghệ Sử Dụng
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Frontend**: React, Tailwind CSS, Material UI, Axios
+- **Backend**: Java (Spring Boot), Spring Security, Spring Data JPA, Spring Start Email
+- **Database**: MySQL
+- **Version Control**: Git, GitHub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+---
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 📦 Hướng Dẫn Cài Đặt Dự Án
 
-## Learn More
+### 1️⃣ Cài đặt
+Clone dự án và cài thư viện:
+```bash
+git clone https://github.com/ngocvann/orderfood_ui.git
+cd orderfood_ui
+npm install
+```
+Clone backend về máy:
+```bash
+git clone https://github.com/ngocvann/OrderFood-website.git
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Cấu Hình Cơ Sở Dữ Liệu 💾
+1. **Mở MySQL và tạo cơ sở dữ liệu với tên phù hợp, ví dụ: order_food.**
+2. **Cập nhật file application.properties trong thư mục src/main/resources với thông tin kết nối MySQL của bạn:**
+```bash
+spring.datasource.url=jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:order_food}
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.username=${DB_USERNAME:<nhập username>}
+spring.datasource.password=${DB_PASSWORD:<nhập mật khẩu>}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 2️⃣ Chạy ứng dụng
+#### Khởi chạy server phát triển:
+Đầu tiên cần chạy backend.
+Sau đó sao chép mã nguồn từ GitHub bằng lệnh sau:
+```bash
+npm start
+```
+Mở trình duyệt tại http://localhost:3000
 
-### Code Splitting
+## 📝 Đánh Giá và Phản Hồi
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Mình rất mong nhận được ý kiến đóng góp của bạn để cải thiện sản phẩm. Nếu bạn có bất kỳ ý tưởng, phản hồi hoặc phát hiện lỗi nào, hãy liên hệ hoặc gửi issue trên GitHub.
 
-### Analyzing the Bundle Size
+Nếu có bất kỳ thắc mắc nào trong quá trình cài đặt, vui lòng tham khảo tài liệu hoặc liên hệ qua các kênh hỗ trợ được liệt kê trong repository này. 🎉
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
